@@ -14,6 +14,7 @@ public class ProductCategory extends BasePage {
     public ProductCategory(WebDriver driver) {
         super(driver);
     }
+
     public ProductCategory addProducts(){
         product1AddButton.click();
         product2AddButton.click();

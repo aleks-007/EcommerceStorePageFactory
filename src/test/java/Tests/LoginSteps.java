@@ -41,20 +41,20 @@ public class LoginSteps extends BaseTest {
         loginPage.navigateToMyAccountPage();
         loginPage.enterLoginDate(user, invalid_pass);
         WaitHelper.waitUntilElementISVisible(driver, By.xpath("(//p[@class='response'])[1]"), 10);
-        Assert.assertTrue(driver.findElement(By.xpath("(//p[@class='response'])[1]")).getText().contains("is incorrect"));
+        Assert.assertTrue(loginPage.isErrorMessagePresent());
     }
     @Test
     public void loginWithNoCredentials()  {
         loginPage.navigateToMyAccountPage();
         loginPage.enterLoginDate("","");
         WaitHelper.waitUntilElementISVisible(driver, By.cssSelector("p[class='response']"), 10);
-        Assert.assertTrue(driver.findElement(By.cssSelector("p[class='response']")).getText().contains("enter your username"));
+        Assert.assertTrue(loginPage.isSecondErrorMessagePresent());
     }
    @Test
     public void loginWithInvalidUsername() {
         loginPage.navigateToMyAccountPage();
         loginPage.enterLoginDate(invalid_user, pass);
        WaitHelper.waitUntilElementISVisible(driver, By.cssSelector("p[class='response']"), 10);
-       Assert.assertTrue(driver.findElement(By.cssSelector("p[class='response']")).getText().contains("Invalid username"));
+       Assert.assertTrue(loginPage.isThirdErrorMessagePresent());
     }
 }

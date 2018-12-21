@@ -21,7 +21,6 @@ public class RegisterSteps extends BaseTest {
 
     public RegisterSteps() throws IOException {
     }
-
     @BeforeMethod
     public void initializeRegisterObjects(){
         registerPage = PageFactory.initElements(driver, RegisterPage.class);
@@ -31,8 +30,8 @@ public class RegisterSteps extends BaseTest {
     public void userNameAcceptableChar() {
         registerPage.navigateToMyAccountPage();
         registerPage.navigateToRegisterPage();
-        Assert.assertEquals("ONLINE STORE ‹ Registration Form",driver.getTitle() );
+        Assert.assertEquals("ONLINE STORE ‹ Registration Form",driver.getTitle());
         registerPage.enterRegisterCredentials(new_username, new_email);
-        Assert.assertTrue(driver.findElement(By.id("login_error")).getText().contains("ERROR"));
+        Assert.assertTrue(registerPage.isRegisterErrorMessagePresent());
     }
 }
