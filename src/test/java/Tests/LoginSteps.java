@@ -1,7 +1,6 @@
 package Tests;
 
 import BaseTest.BaseTest;
-import Helpers.PropertiesReader;
 import Helpers.WaitHelper;
 import Pages.LoginPage;
 import org.openqa.selenium.By;
@@ -12,15 +11,16 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static Helpers.PropertiesReader.getProperty;
+
 public class LoginSteps extends BaseTest {
 
     LoginPage loginPage;
-    PropertiesReader propertyReader;
 
-    private String user = propertyReader.getProperty("username");
-    private String pass = propertyReader.getProperty("password");
-    private String invalid_pass = propertyReader.getProperty("invalid_password");
-    private String invalid_user = propertyReader.getProperty("invalid_username");
+    private String user = getProperty("username");
+    private String pass = getProperty("password");
+    private String invalid_pass = getProperty("invalid_password");
+    private String invalid_user = getProperty("invalid_username");
 
     public LoginSteps() throws IOException {
     }

@@ -1,7 +1,6 @@
 package Tests;
 
 import BaseTest.BaseTest;
-import Helpers.PropertiesReader;
 import Helpers.WaitHelper;
 import Pages.CheckoutPage;
 import Pages.ProductCategory;
@@ -13,12 +12,13 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static Helpers.PropertiesReader.getProperty;
+
 public class CheckoutSteps extends BaseTest {
     CheckoutPage checkoutPage;
     ProductCategory productCategory;
-    PropertiesReader propertyReader;
 
-    private String numberOfProducts = propertyReader.getProperty("productsNumber");
+    private String numberOfProducts = getProperty("productsNumber");
 
     public CheckoutSteps() throws IOException {
     }
@@ -26,7 +26,6 @@ public class CheckoutSteps extends BaseTest {
     @BeforeMethod
     public void initializePageObjects(){
         checkoutPage = PageFactory.initElements(driver, CheckoutPage.class);
-        productCategory = PageFactory.initElements(driver, ProductCategory.class);
     }
     // Happy Flow buying products without login to the site.
     @Test

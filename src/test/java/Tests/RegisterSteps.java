@@ -11,13 +11,14 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static Helpers.PropertiesReader.getProperty;
+
 public class RegisterSteps extends BaseTest {
 
     RegisterPage registerPage;
-    PropertiesReader propertyReader;
 
-    private String new_username = propertyReader.getProperty("new_user");
-    private String new_email = propertyReader.getProperty("email");
+    private String new_username = getProperty("new_user");
+    private String new_email = getProperty("email");
 
     public RegisterSteps() throws IOException {
     }
